@@ -117,41 +117,46 @@ fun LoginScreen() {
 
                 Spacer(modifier = Modifier.height(28.dp))
 
-                Button(
-                    onClick = {
-                        coroutineScope.launch {
-                            if (username.isBlank()) {
-                                snackbarHostState.showSnackbar("Username tidak boleh kosong")
-                            } else {
-                                snackbarHostState.showSnackbar("Login berhasil!")
+                Row(
+                    modifier = Modifier.fillMaxWidth(),
+                    horizontalArrangement = Arrangement.spacedBy(12.dp)
+                ) {
+                    Button(
+                        onClick = {
+                            coroutineScope.launch {
+                                if (username.isBlank()) {
+                                    snackbarHostState.showSnackbar("Username tidak boleh kosong")
+                                } else {
+                                    snackbarHostState.showSnackbar("Login berhasil!")
+                                }
                             }
-                        }
-                    },
-                    modifier = Modifier
-                        .fillMaxWidth()
-                        .height(42.dp),
-                    shape = RoundedCornerShape(8.dp),
-                    contentPadding = PaddingValues(vertical = 8.dp)
-                ) {
-                    Text("Login", fontSize = 14.sp)
+                        },
+                        modifier = Modifier
+                            .weight(1f)
+                            .height(36.dp),
+                        shape = RoundedCornerShape(6.dp),
+                        contentPadding = PaddingValues(vertical = 6.dp)
+                    ) {
+                        Text("Login", fontSize = 13.sp)
+                    }
+
+                    OutlinedButton(
+                        onClick = {
+                            coroutineScope.launch {
+                                snackbarHostState.showSnackbar("Login dibatalkan.")
+                            }
+                        },
+                        modifier = Modifier
+                            .weight(1f)
+                            .height(36.dp),
+                        shape = RoundedCornerShape(6.dp),
+                        contentPadding = PaddingValues(vertical = 6.dp)
+                    ) {
+                        Text("Batal", fontSize = 13.sp)
+                    }
                 }
 
-                Spacer(modifier = Modifier.height(8.dp))
 
-                OutlinedButton(
-                    onClick = {
-                        coroutineScope.launch {
-                            snackbarHostState.showSnackbar("Login dibatalkan.")
-                        }
-                    },
-                    modifier = Modifier
-                        .fillMaxWidth()
-                        .height(42.dp),
-                    shape = RoundedCornerShape(8.dp),
-                    contentPadding = PaddingValues(vertical = 8.dp)
-                ) {
-                    Text("Batal", fontSize = 14.sp)
-                }
 
                 Spacer(modifier = Modifier.height(24.dp))
 
